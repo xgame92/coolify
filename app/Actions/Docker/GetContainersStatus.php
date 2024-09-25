@@ -668,7 +668,7 @@ class GetContainersStatus
                     $this->server->team?->notify(new ContainerRestarted('coolify-proxy', $this->server));
                 }
             } catch (\Throwable $e) {
-                ray($e);
+                ray(sprintf("Error checking or starting proxy: %s %s", $this->server->id, $e->getMessage()));
             }
         } else {
             $this->server->proxy->status = data_get($foundProxyContainer, 'State.Status');
